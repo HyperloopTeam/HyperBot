@@ -1,6 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var hellobot = require('./hellobot');
+var hyperbot = require('./hyperbot');
 
 var app = express();
 var port = process.env.PORT || 3000;
@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 //test
 app.get('/',function (req, res) {res.status(200).send("yo")});
 
-app.post('/hello', hellobot);
+app.post('/hello', hyperbot);
 
 //error handler
 app.use(function (err,req,res,next){
