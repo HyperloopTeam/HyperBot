@@ -7,7 +7,7 @@ module.exports = function(req, res, next) {
   var response = 'swag';
 
 
-  if(triggerWord == "ask:"){
+  if(triggerWord === "ask:"){
 
       var tl = triggerWord.length;
       var query = txt.substring(tl);
@@ -32,17 +32,17 @@ module.exports = function(req, res, next) {
     var tl = triggerWord.length;
     var query = txt.substring(tl);
 
-    if(query == 'team'){
-
+    if(query === 'team'){
+        response = 'None yet'
     }
-    else if(query == 'spacex'){
+    else if(query === 'spacex'){
         response = 'Prelim design: November 13, Final Design: January 13, Design Weekend: January 29 and 30';
     }
     else{
-      response = 'error,triggerWord == ' + triggerWord + "x";
+      response = 'Please do deadlines:team or deadlines:spacex';
     }
   }
-  else if(triggerWord == "search:"){
+  else if(triggerWord === "search:"){
       response = 'Under Construction';
   }
   else{
