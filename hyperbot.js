@@ -6,6 +6,7 @@ module.exports = function(req, res, next) {
 
   var response = 'swag';
 
+  /*
   if(triggerWord === 'ask:'){
 
       var tl = triggerWord.length;
@@ -47,6 +48,7 @@ module.exports = function(req, res, next) {
   else{
     response = 'Yo, ' + userName + '! Type \'deadlines:<optional - team or spacex>\', \'ask:<any text containing \'specs\' and either \'pod\' or \'tube\'>\',\'search:<whatever you want to search in Google Drive>\'';
   }
+  */
 
   var botPayload = {
     text: response;
