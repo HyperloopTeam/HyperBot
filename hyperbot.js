@@ -38,7 +38,7 @@ module.exports = function(req, res, next) {
         response = 'Prelim design: November 13, Final Design: January 13, Design Weekend: January 29 and 30';
     }
     else{
-      response = ''
+      response = 'error'
     }
   }
   else if(triggerWord === 'search:'){
