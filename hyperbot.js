@@ -46,7 +46,7 @@ module.exports = function(req, res, next) {
       response = 'Under Construction';
   }
   else{
-    response = 'Yo, ' + userName + '! Type \'deadlines:<optional - team or spacex>\', \'ask:<any text containing \'specs\' and either \'pod\' or \'tube\'>\',\'search:<whatever you want to search in Google Drive>\'';
+    response = 'Yo, ' + userName + '! Type \'deadlines:<optional - team or spacex>\',\'search:<whatever you want to search in Google Drive>\'';
   }
 
 
