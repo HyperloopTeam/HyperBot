@@ -51,7 +51,7 @@ module.exports = function(req, res, next) {
   */
 
   var botPayload = {
-    text: response;
+    text: response
   };
 
 if(userName !== 'slackbot'){
