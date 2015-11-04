@@ -7,7 +7,7 @@ module.exports = function(req, res, next) {
   var response = 'swag';
 
 
-  if(triggerWord === 'ask:'){
+  if(triggerWord === "ask:"){
 
       var tl = triggerWord.length;
       var query = txt.substring(tl);
@@ -28,7 +28,7 @@ module.exports = function(req, res, next) {
 
 
   }
-  else if(triggerWord === 'deadlines:'){
+  else if(triggerWord === "deadlines:"){
     var tl = triggerWord.length;
     var query = txt.substring(tl);
 
@@ -42,7 +42,7 @@ module.exports = function(req, res, next) {
       response = 'error,triggerWord === ' + triggerWord;
     }
   }
-  else if(triggerWord === 'search:'){
+  else if(triggerWord === "search:"){
       response = 'Under Construction';
   }
   else{
