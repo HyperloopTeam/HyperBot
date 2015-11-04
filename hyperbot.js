@@ -6,7 +6,7 @@ module.exports = function(req, res, next) {
 
   var response = 'swag';
 
-  
+
   if(triggerWord === 'ask:'){
 
       var tl = triggerWord.length;
@@ -39,7 +39,7 @@ module.exports = function(req, res, next) {
         response = 'Prelim design: November 13, Final Design: January 13, Design Weekend: January 29 and 30';
     }
     else{
-      response = 'error'
+      response = 'error,triggerWord === ' + triggerWord;
     }
   }
   else if(triggerWord === 'search:'){
