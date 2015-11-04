@@ -4,7 +4,7 @@ module.exports = function(req, res, next) {
   var triggerWord = req.body.trigger_word;
   var txt = req.body.text;
 
-  var response = '';
+  var response = 'swag';
 
   if(triggerWord === 'ask:'){
 
