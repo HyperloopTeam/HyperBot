@@ -28,7 +28,7 @@ module.exports = function(req, res, next) {
 
 
   }
-  else if(~triggerWord.indexOf("deadlines:")){
+  else if(triggerWord === "deadlines:"){
     var tl = triggerWord.length;
     var query = txt.substring(tl);
 
