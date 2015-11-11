@@ -72,7 +72,7 @@ module.exports = function(req, res, next) {
       if(first_letter === 'A'){
         var announcement = query.substring(1);
         var a = {author : userName, date: new Date(), message: announcement};
-        db.announcements.insert(a, function(err, result)){
+        db.announcements.insert(a, function(err, result){
           if(err) {
             console.log(err);
             response = 'error: ' + err;
