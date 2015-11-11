@@ -89,7 +89,7 @@ module.exports = function(req, res, next) {
       else if(first_letter === 'D'){
         var deadline = query.substring(1);
         var d = {author: userName, date : new Date(), message: deadline};
-        db.deadlines.insert(d, function(err, result)){
+        db.deadlines.insert(d, function(err, result){
           if(err){
             console.log(err);
             response = 'error: ' + err;
@@ -100,7 +100,7 @@ module.exports = function(req, res, next) {
 
           db.close();
 
-        }
+        });
       }
 
 
