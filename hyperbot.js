@@ -1,4 +1,7 @@
 module.exports = function(req, res, next) {
+
+
+
   var userName = req.body.user_name;
 
   var triggerWord = req.body.trigger_word;
@@ -44,6 +47,68 @@ module.exports = function(req, res, next) {
   }
   else if(triggerWord === "search:"){
       response = 'Under Construction';
+  }
+  else if((userName === 'shreyashirday' || userName === 'kkaplan2') && triggerWord === 'add:'){
+
+    var mongodb = require('mongodb');
+
+    var MongoClient = mongodb.MongoClient;
+
+    var url = 'mongodb://shreyashirday:hyperbot@ds053164.mongolab.com:53164/heroku_k0m6zq8z';
+
+    var tl = 4;
+    var query = txt.substring(tl);
+    var first_letter = query.substring(0,1);
+
+
+
+    MongoClient.connect(url, function(err, db){
+
+      if(err) {
+        console.log('unable to connect');
+      }
+      else{
+      //announcement
+      if(first_letter === 'A'){
+        var announcement = query.substring(1);
+        var a = {author : userName, date: new Date(), message: announcement};
+        db.announcements.insert(a, function(err, result)){
+          if(err) {
+            console.log(err);
+            response = 'error: ' + err;
+          }
+          else{
+            response = 'Announcement added!';
+          }
+
+          db.close();
+
+        });
+      }
+      //deadline
+      else if(first_letter === 'D'){
+        var deadline = query.substring(1);
+        var d = {author: userName, date : new Date(), message: deadline};
+        db.deadlines.insert(d, function(err, result)){
+          if(err){
+            console.log(err);
+            response = 'error: ' + err;
+           }
+          else{
+            response = 'Deadline added!';
+          }
+
+          db.close();
+
+        }
+      }
+
+
+
+      }
+
+    });
+
   }
   else{
     response = 'Yo, ' + userName + '! Type \'deadlines:<optional - team or spacex>\',\'search:<whatever you want to search in Google Drive>\'';
