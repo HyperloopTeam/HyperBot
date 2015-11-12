@@ -114,7 +114,7 @@ module.exports = function(req, res, next) {
             else{
 
 
-              response += doc.["message"] + '\n';
+              response += doc["message"] + '\n';
 
               console.log(response);
               console.log(doc + "eh");
