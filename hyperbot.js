@@ -65,6 +65,8 @@ module.exports = function(req, res, next) {
 
               response = doc;
 
+              console.log(response);
+
               var botPayload = {
                 text: response
               };
