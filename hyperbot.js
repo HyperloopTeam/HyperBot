@@ -204,6 +204,7 @@ module.exports = function(req, res, next) {
           });
 
         }
+        else{
         var a = {author : userName, date: new Date(), message: announcement};
 
         collection.insert(a, function(err, result){
@@ -240,6 +241,7 @@ module.exports = function(req, res, next) {
           db.close();
 
         });
+      }
       }
       //deadline
       else if(first_letter === 'D'){
