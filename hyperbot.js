@@ -121,6 +121,7 @@ module.exports = function(req, res, next) {
 
               if(doc === null){
                 console.log("yahoo!");
+
                 var botPayload = {
                   text: response
                 };
@@ -133,7 +134,10 @@ module.exports = function(req, res, next) {
                 }
               }
               else{
-                response += doc["message"] + '\n';
+                if(response === 'swag'){
+                  response = '';
+                }
+                response += doc["message"] + ' at ' + (doc["date"]).toString() + '\n';
               }
 
 
