@@ -114,10 +114,10 @@ module.exports = function(req, res, next) {
             else{
 
 
-              response = doc;
+              response += doc.get('message') + '\n';
 
               console.log(response);
-              console.log(response + "eh");
+              console.log(doc + "eh");
 
               if(doc === null){
                 console.log("yahoo!");
