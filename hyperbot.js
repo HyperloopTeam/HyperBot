@@ -114,7 +114,7 @@ module.exports = function(req, res, next) {
             else{
 
 
-              response += doc["message"] + '\n';
+
 
               console.log(response);
               console.log(doc + "eh");
@@ -131,6 +131,9 @@ module.exports = function(req, res, next) {
                 else{
                   return res.status(200).end();
                 }
+              }
+              else{
+                response += doc["message"] + '\n';
               }
 
 
