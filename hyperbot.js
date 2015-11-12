@@ -184,8 +184,26 @@ module.exports = function(req, res, next) {
       console.log('connected');
       if(first_letter === 'A'){
         var announcement = query.substring(1);
-        var a = {author : userName, date: new Date(), message: announcement};
         var collection = db.collection('announcements');
+        if(announcement === 'clear'){
+          db.collection.deleteMany({},function(err,results){
+            response = 'cleared!';
+            var botPayload = {
+              text: response
+            };
+
+          if(userName !== 'slackbot'){
+            
+            return res.status(200).json(botPayload);
+          }
+          else{
+
+            return res.status(200).end();
+          }
+          });
+        }
+        var a = {author : userName, date: new Date(), message: announcement};
+
         collection.insert(a, function(err, result){
           if(err) {
             console.log('error!');
