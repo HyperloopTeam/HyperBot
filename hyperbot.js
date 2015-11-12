@@ -116,20 +116,20 @@ module.exports = function(req, res, next) {
 
               response = doc;
 
-              console.log(response);
-
-              var botPayload = {
-                text: response
-              };
-
-            if(userName !== 'slackbot'){
-              return res.status(200).json(botPayload);
-            }
-            else{
-              return res.status(200).end();
-            }
+              console.log(response + "eh");
             }
           });
+
+          var botPayload = {
+            text: response
+          };
+
+          if(userName !== 'slackbot'){
+            return res.status(200).json(botPayload);
+          }
+          else{
+            return res.status(200).end();
+          }
       }
     });
   }
