@@ -69,12 +69,14 @@ module.exports = function(req, res, next) {
       }
       else{
       //announcement
+      console.log('connected');
       if(first_letter === 'A'){
         var announcement = query.substring(1);
         var a = {author : userName, date: new Date(), message: announcement};
         var collection = db.collection('announcements');
         collection.insert(a, function(err, result){
           if(err) {
+            console.log('error!');
             console.log(err);
             response = 'error: ' + err;
           }
