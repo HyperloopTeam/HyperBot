@@ -32,6 +32,17 @@ module.exports = function(req, res, next) {
         }
       }
 
+      var botPayload = {
+        text: response
+      };
+
+    if(userName !== 'slackbot'){
+      return res.status(200).json(botPayload);
+    }
+    else{
+      return res.status(200).end();
+    }
+
 
   }
   else if(triggerWord === "deadlines:"){
@@ -40,12 +51,42 @@ module.exports = function(req, res, next) {
 
     if(query === 'team'){
         response = 'None yet'
+        var botPayload = {
+          text: response
+        };
+
+      if(userName !== 'slackbot'){
+        return res.status(200).json(botPayload);
+      }
+      else{
+        return res.status(200).end();
+      }
     }
     else if(query === 'spacex'){
         response = 'Prelim design: November 13, Final Design: January 13, Design Weekend: January 29 and 30';
+        var botPayload = {
+          text: response
+        };
+
+      if(userName !== 'slackbot'){
+        return res.status(200).json(botPayload);
+      }
+      else{
+        return res.status(200).end();
+      }
     }
     else{
       response = 'Please do deadlines:team or deadlines:spacex';
+      var botPayload = {
+        text: response
+      };
+
+    if(userName !== 'slackbot'){
+      return res.status(200).json(botPayload);
+    }
+    else{
+      return res.status(200).end();
+    }
     }
   }
   else if(triggerWord === "announcements:"){
@@ -59,6 +100,16 @@ module.exports = function(req, res, next) {
           cursor.each(function(err, doc){
             if(err){
               console.log(err);
+              var botPayload = {
+                text: response
+              };
+
+            if(userName !== 'slackbot'){
+              return res.status(200).json(botPayload);
+            }
+            else{
+              return res.status(200).end();
+            }
             }
             else{
 
@@ -84,6 +135,16 @@ module.exports = function(req, res, next) {
   }
   else if(triggerWord === "search:"){
       response = 'Under Construction';
+      var botPayload = {
+        text: response
+      };
+
+    if(userName !== 'slackbot'){
+      return res.status(200).json(botPayload);
+    }
+    else{
+      return res.status(200).end();
+    }
   }
   else if((userName === 'shreyashirday' || userName === 'kkaplan2') && triggerWord === 'add:'){
 
@@ -115,10 +176,30 @@ module.exports = function(req, res, next) {
             console.log('error!');
             console.log(err);
             response = 'error: ' + err;
+            var botPayload = {
+              text: response
+            };
+
+          if(userName !== 'slackbot'){
+            return res.status(200).json(botPayload);
+          }
+          else{
+            return res.status(200).end();
+          }
           }
           else{
             console.log('Announcement added');
             response = 'Announcement added!';
+            var botPayload = {
+              text: response
+            };
+
+          if(userName !== 'slackbot'){
+            return res.status(200).json(botPayload);
+          }
+          else{
+            return res.status(200).end();
+          }
           }
 
           db.close();
@@ -134,9 +215,29 @@ module.exports = function(req, res, next) {
           if(err){
             console.log(err);
             response = 'error: ' + err;
+            var botPayload = {
+              text: response
+            };
+
+          if(userName !== 'slackbot'){
+            return res.status(200).json(botPayload);
+          }
+          else{
+            return res.status(200).end();
+          }
            }
           else{
             response = 'Deadline added!';
+            var botPayload = {
+              text: response
+            };
+
+          if(userName !== 'slackbot'){
+            return res.status(200).json(botPayload);
+          }
+          else{
+            return res.status(200).end();
+          }
           }
 
           db.close();
@@ -153,18 +254,19 @@ module.exports = function(req, res, next) {
   }
   else{
     response = 'Yo, ' + userName + '! Type \'deadlines:<optional - team or spacex>\',\'search:<whatever you want to search in Google Drive>\'';
+    var botPayload = {
+      text: response
+    };
+
+  if(userName !== 'slackbot'){
+    return res.status(200).json(botPayload);
+  }
+  else{
+    return res.status(200).end();
+  }
   }
 
 
-  var botPayload = {
-    text: response
-  };
 
-if(userName !== 'slackbot'){
-  return res.status(200).json(botPayload);
-}
-else{
-  return res.status(200).end();
-}
 
 }
