@@ -116,7 +116,11 @@ module.exports = function(req, res, next) {
 
               response = doc;
 
+              console.log(response);
+              console.log(response + "eh");
+
               if(doc === null){
+                console.log("yahoo!");
                 var botPayload = {
                   text: response
                 };
