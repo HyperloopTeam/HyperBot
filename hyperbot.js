@@ -186,21 +186,12 @@ module.exports = function(req, res, next) {
         var announcement = query.substring(1);
         var collection = db.collection('announcements');
         if(announcement === 'clear'){
-          db.collection.deleteMany({},function(err,results){
-            response = 'cleared!';
-            var botPayload = {
-              text: response
-            };
 
-          if(userName !== 'slackbot'){
-            
-            return res.status(200).json(botPayload);
-          }
-          else{
+          db.collection('announcements').deleteMany( {}, function(err, results) {
+              console.log(results);
 
-            return res.status(200).end();
-          }
           });
+
         }
         var a = {author : userName, date: new Date(), message: announcement};
 
