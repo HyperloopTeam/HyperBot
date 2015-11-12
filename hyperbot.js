@@ -81,6 +81,7 @@ module.exports = function(req, res, next) {
             response = 'error: ' + err;
           }
           else{
+            console.log('Announcement added');
             response = 'Announcement added!';
           }
 
