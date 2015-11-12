@@ -1,5 +1,8 @@
 module.exports = function(req, res, next) {
 
+  var mongodb = require('mongodb');
+  var MongoClient = mongodb.MongoClient;
+  var url = 'mongodb://shreyashirday:hyperbot@ds053164.mongolab.com:53164/heroku_k0m6zq8z';
 
 
   var userName = req.body.user_name;
@@ -45,16 +48,47 @@ module.exports = function(req, res, next) {
       response = 'Please do deadlines:team or deadlines:spacex';
     }
   }
+  else if(triggerWord === "announcements:"){
+    MongoClient.connect(url, function(err,db){
+      if(err){
+        console.log(err);
+      }
+      else{
+          var collection = db.collection('announcements');
+          cursor = collection.find();
+          cursor.each(function(err, doc){
+            if(err){
+              console.log(err);
+            }
+            else{
+
+
+              response = doc;
+
+              var botPayload = {
+                text: response
+              };
+
+            if(userName !== 'slackbot'){
+              return res.status(200).json(botPayload);
+            }
+            else{
+              return res.status(200).end();
+            }
+            }
+          });
+      }
+    });
+  }
   else if(triggerWord === "search:"){
       response = 'Under Construction';
   }
   else if((userName === 'shreyashirday' || userName === 'kkaplan2') && triggerWord === 'add:'){
 
-    var mongodb = require('mongodb');
 
-    var MongoClient = mongodb.MongoClient;
 
-    var url = 'mongodb://shreyashirday:hyperbot@ds053164.mongolab.com:53164/heroku_k0m6zq8z';
+
+
 
     var tl = 4;
     var query = txt.substring(tl);
