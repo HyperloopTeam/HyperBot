@@ -188,7 +188,18 @@ module.exports = function(req, res, next) {
         if(announcement === 'clear'){
 
           db.collection('announcements').deleteMany( {}, function(err, results) {
-              console.log(results);
+
+            response = 'cleared!';
+            var botPayload = {
+              text: response
+            };
+
+          if(userName !== 'slackbot'){
+            return res.status(200).json(botPayload);
+          }
+          else{
+            return res.status(200).end();
+          }
 
           });
 
