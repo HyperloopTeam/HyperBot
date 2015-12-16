@@ -1,23 +1,13 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var hyperbot = require('./hyperbot');
+var WebClient = require('slack-client').WebClient;
+var RtmClient = require('slack-client').RtmClient;
 
-var app = express();
-var port = process.env.PORT || 3000;
+var token = 'xoxb-16788374866-ro5FYCv3YFxLsDHHYbmJ9EzW' || process.env.SLACK_API_TOKEN;
 
-app.use(bodyParser.urlencoded({extended: true}));
+var webClient = new WebClient(token);
+var rtm = new RtmClient(webClient, {logLevel: 'debug'});
 
-//test
-app.get('/',function (req, res) {res.status(200).send("yo")});
+rtm.start();
 
-app.post('/hello', hyperbot);
-
-//error handler
-app.use(function (err,req,res,next){
-  console.error(err.stack);
-  res.status(400).send(err.message);
-});
-
-app.listen(port, function () {
-  console.log('Listening on port ' + port);
+rtm.on('message', function(message) {
+  console.log(message);
 });
